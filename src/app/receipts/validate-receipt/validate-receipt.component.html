@@ -1,0 +1,15 @@
+<h3>
+  Validate Receipt Ids
+</h3>
+
+<form (ngSubmit)="onValidate()"  #validateForm="ngForm">
+  <div class="form-group mb-2">
+    <label for="receiptId">Receipt Id</label>
+    <input type="text" class="form-control" id="receiptId" name="receiptId" placeholder="917381381286" ngModel required>
+  </div>
+  <button type="submit" class="btn btn-primary mb-3" [disabled]="!validateForm.valid">Validate</button>
+</form>
+<div *ngIf="loading" class="spinner-border spinner-border-xl"></div>
+<div *ngIf="message" [ngClass]="{'bg-success': !isError, 'bg-danger': isError}" class="help-text text-white p-3 mb-2 rounded">
+  {{message}}
+</div>

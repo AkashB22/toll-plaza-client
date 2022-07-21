@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <app-add-receipt (newReceipt)="triggerReload()"></app-add-receipt>
+    </div>
+    <div class="col-6">
+      <app-validate-receipt></app-validate-receipt>
+    </div>
+  </div>
+  <div class="row">
+    <app-list-receipt [reloadChanges]="reload"></app-list-receipt>
+  </div>
+</div>

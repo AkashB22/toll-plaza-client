@@ -1,0 +1,20 @@
+<h3>Add New Receipt</h3>
+<form (ngSubmit)="onSave()" #receiptForm="ngForm">
+  <div class="form-group mb-1">
+    <label for="vehicleNo">Vehicle No</label>
+    <input type="text" class="form-control" id="vehicleNo" name="vehicleNo" placeholder="ka21as1232" ngModel
+      required>
+  </div>
+  <div class="form-group mb-2">
+    <label for="amount">Amount</label>
+    <select class="form-control" id="amount" name="amount" ngModel required [(ngModel)]="defaultAmount">
+      <option value="100">One Way</option>
+      <option value="200">Two Way</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary mb-3" [disabled]="!receiptForm.valid">Save</button>
+</form>
+<div *ngIf="loading" class="spinner-border spinner-border-xl"></div>
+<div *ngIf="message" [ngClass]="{'bg-success': !isError, 'bg-danger': isError}" class="help-text text-white p-3 mb-2 rounded">
+  {{message}}
+</div>

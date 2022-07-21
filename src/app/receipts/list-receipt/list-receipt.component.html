@@ -1,0 +1,38 @@
+<h3>List of Receipts</h3>
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li *ngFor="let page of pages" class="page-item" (click)="pageChange(page, $event)">
+      <a class="page-link" href="#">{{[page]}}</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+
+<table *ngIf="!loading" class="table">
+  <thead>
+    <tr>
+      <th scope="col">Receipt Id</th>
+      <th scope="col">Vehicle No</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Type</th>
+      <th scope="col">Status</th>
+      <th scope="col">Created At</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="receipts">
+    <tr *ngFor="let receipt of receipts">
+      <td>{{receipt._id}}</td>
+      <td>{{receipt.vehicleId.vehicleNo | uppercase}}</td>
+      <td>{{receipt.amount}}</td>
+      <td>{{receipt.type}}</td>
+      <td>{{receipt.status}}</td>
+      <td>{{receipt.createdAt | date:'medium'}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="loading spinner-border spinner-border-xl" *ngIf="loading"></div>
+<div *ngIf="isError && message" class="bg-danger help-text text-white p-3 mb-2 rounded">
+  {{message}}
+</div>
